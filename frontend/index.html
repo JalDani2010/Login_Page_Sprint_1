@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Donor Registration and Login</h1>
+    <form id="donorRegisterForm">
+        <h2>Register Donor</h2>
+        <input type="text" id="donorName" placeholder="Name" required>
+        <input type="email" id="donorEmail" placeholder="Email" required>
+        <input type="password" id="donorPassword" placeholder="Password" required>
+        <input type="text" id="donorContact" placeholder="Contact Number" required>
+        <button type="submit">Register</button>
+    </form>
+
+    <form id="donorLoginForm">
+        <h2>Login Donor</h2>
+        <input type="email" id="donorLoginEmail" placeholder="Email" required>
+        <input type="password" id="donorLoginPassword" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
+
+    <h1>NGO Registration and Login</h1>
+    <form id="ngoRegisterForm">
+        <h2>Register NGO</h2>
+        <input type="text" id="ngoName" placeholder="NGO Name" required>
+        <input type="text" id="ngoContactPerson" placeholder="Contact Person" required>
+        <input type="text" id="ngoMobile" placeholder="Mobile Number" required>
+        <input type="email" id="ngoEmail" placeholder="Email" required>
+        <input type="text" id="ngoAddress" placeholder="Address" required>
+        <input type="password" id="ngoPassword" placeholder="Password" required>
+        <button type="submit">Register</button>
+    </form>
+
+    <form id="ngoLoginForm">
+        <h2>Login NGO</h2>
+        <input type="email" id="ngoLoginEmail" placeholder="Email" required>
+        <input type="password" id="ngoLoginPassword" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>
