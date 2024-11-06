@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const connectDB = require("./db/connectDB");
 const donorRoutes = require("./routes/donorRoutes");
 const ngoRoutes = require("./routes/ngoRoutes");
+const adminRoutes = require("./routes/adminRoutes");  
 const path = require("path"); // Import path module
 
 dotenv.config();

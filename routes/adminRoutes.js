@@ -1,11 +1,14 @@
 // routes/adminRoutes.js
 
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const { verifyNGO } = require("../controllers/adminController");
-const { adminAuth } = require("../middleware/authMiddleware"); // Assuming an adminAuth middleware
+const { adminLogin, verifyNGO } = require('../controllers/adminController');
+const { adminAuth } = require('../middleware/authMiddleware');
 
-// Verify NGO documents
-router.post("/verify-ngo", adminAuth, verifyNGO);
+// Admin login route
+router.post('/login', adminLogin);
+
+// Protected routes for NGO verification
+router.post('/verify-ngo', adminAuth, verifyNGO);  // Only accessible to logged-in admin
 
 module.exports = router;

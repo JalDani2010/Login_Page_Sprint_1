@@ -8,7 +8,7 @@ exports.registerDonor = async (req, res) => {
         const { name, email, password, contactNumber } = req.body;
 
         // Check if donor already exists
-        let donor = await Donor.findOne({ contactNumber });
+        let donor = await Donor.findOne({ email });
         if (donor) return res.status(400).json({ message: 'Donor already registered' });
 
         // Create and save new donor

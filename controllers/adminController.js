@@ -2,6 +2,23 @@
 
 const NGO = require('../models/NGO');
 const { sendNotification } = require('../utils/notifications');
+const jwt = require('jsonwebtoken');
+
+// Admin login function
+exports.adminLogin = async (req, res) => {
+  const { email, password } = req.body;
+
+  // Check if email and password match the global admin credentials
+  if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
+    // Generate a JWT for the admin
+    const token = jwt.sign({ role: 'admin' }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    
+    res.status(200).json({ message: 'Admin login successful', token });
+  } else {
+    res.status(401).json({ message: 'Invalid admin credentials' });
+  }
+};
+
 
 // Verify NGO documents
 exports.verifyNGO = async (req, res) => {
