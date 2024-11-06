@@ -39,3 +39,24 @@ exports.loginDonor = async (req, res) => {
         res.status(500).json({ error: 'Server error' });
     }
 };
+
+// Function to retrieve and filter NGOs
+exports.getFilteredNGOs = async (req, res) => {
+    try {
+      // Extract query parameters for filtering
+      const { location, cause, verificationStatus } = req.query;
+  
+      // Build filter criteria based on query params
+      let filterCriteria = {};
+      if (location) filterCriteria.location = location;
+      if (cause) filterCriteria.cause = cause;
+      if (verificationStatus) filterCriteria.verificationStatus = verificationStatus;
+  
+      // Retrieve filtered list of NGOs based on criteria
+      const ngos = await NGO.find(filterCriteria);
+      
+      res.status(200).json({ ngos, message: 'Filtered NGO list retrieved successfully' });
+    } catch (error) {
+      res.status(500).json({ message: 'Error retrieving NGOs', error });
+    }
+  };

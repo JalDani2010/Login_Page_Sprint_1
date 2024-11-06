@@ -11,7 +11,7 @@ exports.adminLogin = async (req, res) => {
   // Check if email and password match the global admin credentials
   if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
     // Generate a JWT for the admin
-    const token = jwt.sign({ role: 'admin' }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ role: 'admin' }, process.env.JWT_SECRET, { expiresIn: '5h' });
     
     res.status(200).json({ message: 'Admin login successful', token });
   } else {

@@ -1,13 +1,12 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const { registerDonor, loginDonor } = require("../controllers/donorController");
+const { registerDonor, loginDonor, getFilteredNGOs } = require('../controllers/donorController');
 
-// Register route
-router.post("/register", registerDonor);
+// Donor registration and login routes
+router.post('/register', registerDonor);
+router.post('/login', loginDonor);
 
-// Login route
-router.post("/login", loginDonor);
-
-
+// Route to get filtered list of NGOs
+router.get('/ngos', getFilteredNGOs);  
 
 module.exports = router;

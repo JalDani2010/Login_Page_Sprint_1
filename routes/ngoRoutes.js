@@ -2,7 +2,11 @@ const express = require("express");
 const router = express.Router();
 const { registerNGO, loginNGO } = require("../controllers/ngoController");
 const { getNGOs, updateNGOProfile } = require("../controllers/ngoController");
+const { viewPendingRequests } = require("../controllers/ngoController");
 const { ngoAuth } = require("../middleware/authMiddleware");
+
+// Route to view pending verification requests
+router.get("/pending-verifications", viewPendingRequests);
 
 // Register route
 router.post("/register", registerNGO);

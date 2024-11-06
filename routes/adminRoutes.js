@@ -4,6 +4,10 @@ const express = require('express');
 const router = express.Router();
 const { adminLogin, verifyNGO } = require('../controllers/adminController');
 const { adminAuth } = require('../middleware/authMiddleware');
+const { viewPendingRequests } = require('../controllers/ngoController');
+
+// Route to view pending verification requests
+router.get('/pending-verifications', adminAuth, viewPendingRequests);
 
 // Admin login route
 router.post('/login', adminLogin);
