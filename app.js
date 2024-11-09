@@ -12,8 +12,6 @@ connectDB();
 const app = express();
 app.use(express.json());
 
-// Serve static files from the frontend directory
-app.use(express.static(path.join(__dirname, "frontend"))); // Serve static files
 
 // API routes
 app.use("/api/donors", donorRoutes);

@@ -72,21 +72,6 @@ exports.loginNGO = async (req, res) => {
   }
 };
 
-// Get filtered list of NGOs
-exports.getNGOs = async (req, res) => {
-  try {
-    const filter = {}; // e.g., { verificationStatus: 'verified' }
-    if (req.query.verificationStatus) {
-      filter.verificationStatus = req.query.verificationStatus;
-    }
-
-    const ngos = await NGO.find(filter);
-    res.status(200).json(ngos);
-  } catch (error) {
-    res.status(500).json({ message: "Error fetching NGOs", error });
-  }
-};
-
 // Update NGO profile
 exports.updateNGOProfile = async (req, res) => {
   try {

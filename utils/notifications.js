@@ -1,5 +1,3 @@
-// utils/notifications.js
-
 const nodemailer = require('nodemailer');
 
 // Create a reusable transporter object

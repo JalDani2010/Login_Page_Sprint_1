@@ -1,5 +1,3 @@
-// controllers/adminController.js
-
 const NGO = require('../models/NGO');
 const { sendNotification } = require('../utils/notifications');
 const jwt = require('jsonwebtoken');

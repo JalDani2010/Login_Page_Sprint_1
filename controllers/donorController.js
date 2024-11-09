@@ -1,6 +1,7 @@
 const Donor = require('../models/Donor');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const NGO = require('../models/NGO');
 
 // Register a new donor
 exports.registerDonor = async (req, res) => {
