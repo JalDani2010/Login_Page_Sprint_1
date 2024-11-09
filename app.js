@@ -4,7 +4,7 @@ const connectDB = require("./db/connectDB");
 const donorRoutes = require("./routes/donorRoutes");
 const ngoRoutes = require("./routes/ngoRoutes");
 const adminRoutes = require("./routes/adminRoutes");  
-const path = require("path"); // Import path module
+const path = require("path"); 
 
 dotenv.config();
 connectDB();
