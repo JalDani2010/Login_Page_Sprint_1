@@ -11,6 +11,7 @@ const ngoSchema = new mongoose.Schema(
     },
     location: { type: String, required: true, index: true }, // Indexing for optimized search
     cause: { type: String, required: true, index: true },
+    
     contactPerson: {
       type: String,
       required: [true, "Please provide contact person's name"],

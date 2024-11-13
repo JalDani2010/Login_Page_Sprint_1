@@ -12,7 +12,6 @@ connectDB();
 const app = express();
 app.use(express.json());
 
-
 // API routes
 app.use("/api/donors", donorRoutes);
 app.use("/api/ngos", ngoRoutes);
