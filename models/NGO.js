@@ -46,14 +46,6 @@ const ngoSchema = new mongoose.Schema(
       ],
       unique: true,
     },
-    updated12A: {
-      type: Boolean,
-      default: false,
-    },
-    updated80G: {
-      type: Boolean,
-      default: false,
-    },
     address: {
       type: String,
       required: [true, "Please provide address"],
@@ -74,6 +66,8 @@ const ngoSchema = new mongoose.Schema(
       enum: ["pending", "verified", "rejected"],
       default: "pending",
     },
+    updated12A: { type: String, required: true }, // Path for 12A document
+    updated80G: { type: String, required: true }, // Path for 80G document
   },
   {
     timestamps: true,

@@ -3,46 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donation Management System</title>
+    <title>NGO Registration - Donation Management System</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Donor Registration and Login</h1>
-    <form id="donorRegisterForm">
-        <h2>Register Donor</h2>
-        <input type="text" id="donorName" placeholder="Name" required>
-        <input type="email" id="donorEmail" placeholder="Email" required>
-        <input type="password" id="donorPassword" placeholder="Password" required>
-        <input type="text" id="donorContact" placeholder="Contact Number" required>
-        <button type="submit">Register</button>
-    </form>
+    <h1>NGO Registration</h1>
 
-    <form id="donorLoginForm">
-        <h2>Login Donor</h2>
-        <input type="email" id="donorLoginEmail" placeholder="Email" required>
-        <input type="password" id="donorLoginPassword" placeholder="Password" required>
-        <button type="submit">Login</button>
-    </form>
-
-    <h1>NGO Registration and Login</h1>
-    <form id="ngoRegisterForm">
+    <form id="ngoRegisterForm" enctype="multipart/form-data">
         <h2>Register NGO</h2>
-        <input type="text" id="ngoName" placeholder="NGO Name" required>
-        <input type="text" id="ngoContactPerson" placeholder="Contact Person" required>
-        <input type="text" id="ngoMobile" placeholder="Mobile Number" required>
-        <input type="email" id="ngoEmail" placeholder="Email" required>
-        <input type="text" id="ngoAddress" placeholder="Address" required>
-        <input type="password" id="ngoPassword" placeholder="Password" required>
-        <button type="submit">Register</button>
+
+        <!-- NGO Name -->
+        <label for="ngoName">NGO Name</label>
+        <input type="text" id="ngoName" name="name" placeholder="NGO Name" required maxlength="100" minlength="3">
+
+        <!-- Location -->
+        <label for="ngoLocation">Location</label>
+        <input type="text" id="ngoLocation" name="location" placeholder="Location" required>
+
+        <!-- Cause -->
+        <label for="ngoCause">Cause</label>
+        <input type="text" id="ngoCause" name="cause" placeholder="Cause" required>
+
+        <!-- Cause Area -->
+        <label for="ngoCauseArea">Cause Area</label>
+        <input type="text" id="ngoCauseArea" name="causeArea" placeholder="Cause Area" required maxlength="100">
+
+        <!-- Vision -->
+        <label for="ngoVision">Vision</label>
+        <textarea id="ngoVision" name="vision" placeholder="Vision" required maxlength="500"></textarea>
+
+        <!-- Mission -->
+        <label for="ngoMission">Mission</label>
+        <textarea id="ngoMission" name="mission" placeholder="Mission" required maxlength="500"></textarea>
+
+        <!-- Contact Person -->
+        <label for="ngoContactPerson">Contact Person</label>
+        <input type="text" id="ngoContactPerson" name="contactPerson" placeholder="Contact Person" required maxlength="50" minlength="3">
+
+        <!-- Mobile Number -->
+        <label for="ngoMobile">Mobile Number</label>
+        <input type="text" id="ngoMobile" name="mobileNumber" placeholder="Mobile Number" required pattern="[0-9]{10}">
+
+        <!-- Email -->
+        <label for="ngoEmail">Email</label>
+        <input type="email" id="ngoEmail" name="email" placeholder="Email" required>
+
+        <!-- Address -->
+        <label for="ngoAddress">Address</label>
+        <textarea id="ngoAddress" name="address" placeholder="Address" required maxlength="500"></textarea>
+
+        <!-- Password -->
+        <label for="ngoPassword">Password</label>
+        <input type="password" id="ngoPassword" name="password" placeholder="Password" required minlength="6">
+
+        <!-- 12A Certificate -->
+        <label for="updated12A">Upload 12A Certificate</label>
+        <input type="file" id="updated12A" name="updated12A" accept="application/pdf" required>
+
+        <!-- 80G Certificate -->
+        <label for="updated80G">Upload 80G Certificate</label>
+        <input type="file" id="updated80G" name="updated80G" accept="application/pdf" required>
+
+        <button type="submit">Register NGO</button>
     </form>
 
-    <form id="ngoLoginForm">
-        <h2>Login NGO</h2>
-        <input type="email" id="ngoLoginEmail" placeholder="Email" required>
-        <input type="password" id="ngoLoginPassword" placeholder="Password" required>
-        <button type="submit">Login</button>
-    </form>
+    <script>
+        document.getElementById("ngoRegisterForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
 
-    <script src="script.js"></script>
+            // Create a FormData object to gather form data
+            const formData = new FormData(this);
+
+            try {
+                const response = await fetch('http://localhost:3000/api/ngos/register', { // Adjust URL to your route
+                    method: 'POST',
+                    body: formData,
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    alert(data.message); // Success
+                } else {
+                    alert(data.error || "Registration failed. Please try again.");
+                }
+            } catch (error) {
+                alert("An error occurred: " + error.message);
+            }
+        });
+    </script>
 </body>
 </html>
